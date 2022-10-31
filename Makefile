@@ -1,7 +1,7 @@
-# This Makefile is for the RT::Extension::Slack extension to perl.
+# This Makefile is for the RT::Extension::GoogleChat extension to perl.
 #
 # It was generated automatically by MakeMaker version
-# 6.98 (Revision: 69800) from the contents of
+# 7.44 (Revision: 74400) from the contents of
 # Makefile.PL. Don't edit this file, edit Makefile.PL instead.
 #
 #       ANY CHANGES MADE HERE WILL BE LOST!
@@ -11,26 +11,24 @@
 
 #   MakeMaker Parameters:
 
-#     ABSTRACT => q[RT-Extension-Slack Extension]
+#     ABSTRACT => q[RT-Extension-GoogleChat Extension]
 #     AUTHOR => [q[Andrew Wippler <andrew.wippler@gmail.com>]]
-#     BUILD_REQUIRES => { ExtUtils::MakeMaker=>q[6.59] }
+#     BUILD_REQUIRES => { ExtUtils::MakeMaker=>q[6.36] }
 #     CONFIGURE_REQUIRES => {  }
-#     DISTNAME => q[RT-Extension-Slack]
-#     INSTALLARCHLIB => q[/usr/local/share/request-tracker4/plugins/RT-Extension-Slack/lib]
-#     INSTALLSITEARCH => q[/usr/local/share/request-tracker4/man]
-#     INSTALLSITELIB => q[/usr/local/share/request-tracker4/plugins/RT-Extension-Slack/lib]
-#     INSTALLSITEMAN1DIR => q[/usr/local/share/request-tracker4/man/man1]
-#     INSTALLSITEMAN3DIR => q[/usr/local/share/request-tracker4/man/man3]
+#     DISTNAME => q[RT-Extension-GoogleChat]
+#     INSTALLARCHLIB => q[/opt/rt5/local/plugins/RT-Extension-GoogleChat/lib]
+#     INSTALLSITEARCH => q[/opt/rt5/local/man]
+#     INSTALLSITELIB => q[/opt/rt5/local/plugins/RT-Extension-GoogleChat/lib]
+#     INSTALLSITEMAN1DIR => q[/opt/rt5/local/man/man1]
+#     INSTALLSITEMAN3DIR => q[/opt/rt5/local/man/man3]
 #     LICENSE => q[mit]
-#     MIN_PERL_VERSION => q[5.008003]
-#     NAME => q[RT::Extension::Slack]
+#     NAME => q[RT::Extension::GoogleChat]
 #     NO_META => q[1]
-#     PREREQ_PM => { ExtUtils::MakeMaker=>q[6.59] }
-#     SIGN => q[1]
+#     PREREQ_PM => { ExtUtils::MakeMaker=>q[6.36] }
 #     TEST_REQUIRES => {  }
 #     VERSION => q[0.01]
-#     VERSION_FROM => q[lib/RT/Extension/Slack.pm]
-#     dist => { PREOP=>q[$(PERL) -I. "-MModule::Install::Admin" -e "dist_preop(q($(DISTVNAME)))"] }
+#     VERSION_FROM => q[lib/RT/Extension/GoogleChat.pm]
+#     dist => {  }
 #     realclean => { FILES=>q[MYMETA.yml] }
 
 # --- MakeMaker post_initialize section:
@@ -38,29 +36,29 @@
 
 # --- MakeMaker const_config section:
 
-# These definitions are from config.sh (via /usr/lib/x86_64-linux-gnu/perl/5.20/Config.pm).
+# These definitions are from config.sh (via /usr/lib/x86_64-linux-gnu/perl-base/Config.pm).
 # They may have been overridden via Makefile.PL or on the command line.
 AR = ar
-CC = cc
+CC = x86_64-linux-gnu-gcc
 CCCDLFLAGS = -fPIC
 CCDLFLAGS = -Wl,-E
 DLEXT = so
 DLSRC = dl_dlopen.xs
 EXE_EXT = 
 FULL_AR = /usr/bin/ar
-LD = cc
-LDDLFLAGS = -shared -L/usr/local/lib -fstack-protector
-LDFLAGS =  -fstack-protector -L/usr/local/lib
-LIBC = libc-2.19.so
+LD = x86_64-linux-gnu-gcc
+LDDLFLAGS = -shared -L/usr/local/lib -fstack-protector-strong
+LDFLAGS =  -fstack-protector-strong -L/usr/local/lib
+LIBC = libc-2.31.so
 LIB_EXT = .a
 OBJ_EXT = .o
 OSNAME = linux
-OSVERS = 3.2.0-4-amd64
+OSVERS = 4.19.0
 RANLIB = :
-SITELIBEXP = /usr/local/share/perl/5.20.2
-SITEARCHEXP = /usr/local/lib/x86_64-linux-gnu/perl/5.20.2
+SITELIBEXP = /usr/local/share/perl/5.32.1
+SITEARCHEXP = /usr/local/lib/x86_64-linux-gnu/perl/5.32.1
 SO = so
-VENDORARCHEXP = /usr/lib/x86_64-linux-gnu/perl5/5.20
+VENDORARCHEXP = /usr/lib/x86_64-linux-gnu/perl5/5.32
 VENDORLIBEXP = /usr/share/perl5
 
 
@@ -68,8 +66,8 @@ VENDORLIBEXP = /usr/share/perl5
 AR_STATIC_ARGS = cr
 DIRFILESEP = /
 DFSEP = $(DIRFILESEP)
-NAME = RT::Extension::Slack
-NAME_SYM = RT_Extension_Slack
+NAME = RT::Extension::GoogleChat
+NAME_SYM = RT_Extension_GoogleChat
 VERSION = 0.01
 VERSION_MACRO = VERSION
 VERSION_SYM = 0_01
@@ -85,58 +83,62 @@ INST_MAN1DIR = blib/man1
 INST_MAN3DIR = blib/man3
 MAN1EXT = 1p
 MAN3EXT = 3pm
+MAN1SECTION = 1
+MAN3SECTION = 3
 INSTALLDIRS = site
 DESTDIR = 
-PREFIX = /usr
-PERLPREFIX = $(PREFIX)
-SITEPREFIX = $(PREFIX)/local
-VENDORPREFIX = $(PREFIX)
-INSTALLPRIVLIB = $(PERLPREFIX)/share/perl/5.20
+PREFIX = $(SITEPREFIX)
+PERLPREFIX = /usr
+SITEPREFIX = /usr/local
+VENDORPREFIX = /usr
+INSTALLPRIVLIB = /usr/share/perl/5.32
 DESTINSTALLPRIVLIB = $(DESTDIR)$(INSTALLPRIVLIB)
-INSTALLSITELIB = /usr/local/share/request-tracker4/plugins/RT-Extension-Slack/lib
+INSTALLSITELIB = /opt/rt5/local/plugins/RT-Extension-GoogleChat/lib
 DESTINSTALLSITELIB = $(DESTDIR)$(INSTALLSITELIB)
-INSTALLVENDORLIB = $(VENDORPREFIX)/share/perl5
+INSTALLVENDORLIB = /usr/share/perl5
 DESTINSTALLVENDORLIB = $(DESTDIR)$(INSTALLVENDORLIB)
-INSTALLARCHLIB = /usr/local/share/request-tracker4/plugins/RT-Extension-Slack/lib
+INSTALLARCHLIB = /opt/rt5/local/plugins/RT-Extension-GoogleChat/lib
 DESTINSTALLARCHLIB = $(DESTDIR)$(INSTALLARCHLIB)
-INSTALLSITEARCH = /usr/local/share/request-tracker4/man
+INSTALLSITEARCH = /opt/rt5/local/man
 DESTINSTALLSITEARCH = $(DESTDIR)$(INSTALLSITEARCH)
-INSTALLVENDORARCH = $(VENDORPREFIX)/lib/x86_64-linux-gnu/perl5/5.20
+INSTALLVENDORARCH = /usr/lib/x86_64-linux-gnu/perl5/5.32
 DESTINSTALLVENDORARCH = $(DESTDIR)$(INSTALLVENDORARCH)
-INSTALLBIN = $(PERLPREFIX)/bin
+INSTALLBIN = /usr/bin
 DESTINSTALLBIN = $(DESTDIR)$(INSTALLBIN)
-INSTALLSITEBIN = $(SITEPREFIX)/bin
+INSTALLSITEBIN = /usr/local/bin
 DESTINSTALLSITEBIN = $(DESTDIR)$(INSTALLSITEBIN)
-INSTALLVENDORBIN = $(VENDORPREFIX)/bin
+INSTALLVENDORBIN = /usr/bin
 DESTINSTALLVENDORBIN = $(DESTDIR)$(INSTALLVENDORBIN)
-INSTALLSCRIPT = $(PERLPREFIX)/bin
+INSTALLSCRIPT = /usr/bin
 DESTINSTALLSCRIPT = $(DESTDIR)$(INSTALLSCRIPT)
-INSTALLSITESCRIPT = $(SITEPREFIX)/bin
+INSTALLSITESCRIPT = /usr/local/bin
 DESTINSTALLSITESCRIPT = $(DESTDIR)$(INSTALLSITESCRIPT)
-INSTALLVENDORSCRIPT = $(VENDORPREFIX)/bin
+INSTALLVENDORSCRIPT = /usr/bin
 DESTINSTALLVENDORSCRIPT = $(DESTDIR)$(INSTALLVENDORSCRIPT)
-INSTALLMAN1DIR = $(PERLPREFIX)/share/man/man1
+INSTALLMAN1DIR = /usr/share/man/man1
 DESTINSTALLMAN1DIR = $(DESTDIR)$(INSTALLMAN1DIR)
-INSTALLSITEMAN1DIR = /usr/local/share/request-tracker4/man/man1
+INSTALLSITEMAN1DIR = /opt/rt5/local/man/man1
 DESTINSTALLSITEMAN1DIR = $(DESTDIR)$(INSTALLSITEMAN1DIR)
-INSTALLVENDORMAN1DIR = $(VENDORPREFIX)/share/man/man1
+INSTALLVENDORMAN1DIR = /usr/share/man/man1
 DESTINSTALLVENDORMAN1DIR = $(DESTDIR)$(INSTALLVENDORMAN1DIR)
-INSTALLMAN3DIR = $(PERLPREFIX)/share/man/man3
+INSTALLMAN3DIR = /usr/share/man/man3
 DESTINSTALLMAN3DIR = $(DESTDIR)$(INSTALLMAN3DIR)
-INSTALLSITEMAN3DIR = /usr/local/share/request-tracker4/man/man3
+INSTALLSITEMAN3DIR = /opt/rt5/local/man/man3
 DESTINSTALLSITEMAN3DIR = $(DESTDIR)$(INSTALLSITEMAN3DIR)
-INSTALLVENDORMAN3DIR = $(VENDORPREFIX)/share/man/man3
+INSTALLVENDORMAN3DIR = /usr/share/man/man3
 DESTINSTALLVENDORMAN3DIR = $(DESTDIR)$(INSTALLVENDORMAN3DIR)
 PERL_LIB =
-PERL_ARCHLIB = /usr/lib/x86_64-linux-gnu/perl/5.20
+PERL_ARCHLIB = /usr/lib/x86_64-linux-gnu/perl/5.32
+PERL_ARCHLIBDEP = /usr/lib/x86_64-linux-gnu/perl/5.32
 LIBPERL_A = libperl.a
 FIRST_MAKEFILE = Makefile
 MAKEFILE_OLD = Makefile.old
 MAKE_APERL_FILE = Makefile.aperl
 PERLMAINCC = $(CC)
-PERL_INC = /usr/lib/x86_64-linux-gnu/perl/5.20/CORE
-PERL = /usr/bin/perl "-Iinc"
-FULLPERL = /usr/bin/perl "-Iinc"
+PERL_INC = /usr/lib/x86_64-linux-gnu/perl/5.32/CORE
+PERL_INCDEP = /usr/lib/x86_64-linux-gnu/perl/5.32/CORE
+PERL = "/usr/bin/perl" "-Iinc"
+FULLPERL = "/usr/bin/perl" "-Iinc"
 ABSPERL = $(PERL)
 PERLRUN = $(PERL)
 FULLPERLRUN = $(FULLPERL)
@@ -149,20 +151,20 @@ PERM_DIR = 755
 PERM_RW = 644
 PERM_RWX = 755
 
-MAKEMAKER   = /usr/share/perl/5.20/ExtUtils/MakeMaker.pm
-MM_VERSION  = 6.98
-MM_REVISION = 69800
+MAKEMAKER   = /usr/share/perl/5.32/ExtUtils/MakeMaker.pm
+MM_VERSION  = 7.44
+MM_REVISION = 74400
 
 # FULLEXT = Pathname for extension directory (eg Foo/Bar/Oracle).
 # BASEEXT = Basename part of FULLEXT. May be just equal FULLEXT. (eg Oracle)
 # PARENT_NAME = NAME without BASEEXT and no trailing :: (eg Foo::Bar)
 # DLBASE  = Basename part of dynamic library. May be just equal BASEEXT.
 MAKE = make
-FULLEXT = RT/Extension/Slack
-BASEEXT = Slack
+FULLEXT = RT/Extension/GoogleChat
+BASEEXT = GoogleChat
 PARENT_NAME = RT::Extension
 DLBASE = $(BASEEXT)
-VERSION_FROM = lib/RT/Extension/Slack.pm
+VERSION_FROM = lib/RT/Extension/GoogleChat.pm
 OBJECT = 
 LDFROM = $(OBJECT)
 LINKTYPE = dynamic
@@ -174,10 +176,10 @@ C_FILES  =
 O_FILES  = 
 H_FILES  = 
 MAN1PODS = 
-MAN3PODS = lib/RT/Extension/Slack.pm
+MAN3PODS = lib/RT/Extension/GoogleChat.pm
 
 # Where is the Config information that we are using/depend on
-CONFIGDEP = $(PERL_ARCHLIB)$(DFSEP)Config.pm $(PERL_INC)$(DFSEP)config.h
+CONFIGDEP = $(PERL_ARCHLIBDEP)$(DFSEP)Config.pm $(PERL_INCDEP)$(DFSEP)config.h
 
 # Where to build things
 INST_LIBDIR      = $(INST_LIB)/RT/Extension
@@ -193,17 +195,15 @@ INST_BOOT        =
 # Extra linker info
 EXPORT_LIST        = 
 PERL_ARCHIVE       = 
+PERL_ARCHIVEDEP    = 
 PERL_ARCHIVE_AFTER = 
 
 
-TO_INST_PM = lib/RT/Extension/Slack.pm
-
-PM_TO_BLIB = lib/RT/Extension/Slack.pm \
-	blib/lib/RT/Extension/Slack.pm
+TO_INST_PM = lib/RT/Extension/GoogleChat.pm
 
 
 # --- MakeMaker platform_constants section:
-MM_Unix_VERSION = 6.98
+MM_Unix_VERSION = 7.44
 PERL_MALLOC_DEF = -DPERL_EXTMALLOC_DEF -Dmalloc=Perl_malloc -Dfree=Perl_mfree -Drealloc=Perl_realloc -Dcalloc=Perl_calloc
 
 
@@ -261,15 +261,15 @@ ZIPFLAGS = -r
 COMPRESS = gzip --best
 SUFFIX = .gz
 SHAR = shar
-PREOP = $(PERL) -I. "-MModule::Install::Admin" -e "dist_preop(q($(DISTVNAME)))"
+PREOP = $(NOECHO) $(NOOP)
 POSTOP = $(NOECHO) $(NOOP)
 TO_UNIX = $(NOECHO) $(NOOP)
 CI = ci -u
 RCS_LABEL = rcs -Nv$(VERSION_SYM): -q
 DIST_CP = best
 DIST_DEFAULT = tardist
-DISTNAME = RT-Extension-Slack
-DISTVNAME = RT-Extension-Slack-0.01
+DISTNAME = RT-Extension-GoogleChat
+DISTVNAME = RT-Extension-GoogleChat-0.01
 
 
 # --- MakeMaker macro section:
@@ -295,13 +295,15 @@ DISTVNAME = RT-Extension-Slack-0.01
 PASTHRU = LIBPERL_A="$(LIBPERL_A)"\
 	LINKTYPE="$(LINKTYPE)"\
 	LD="$(LD)"\
-	PREFIX="$(PREFIX)"
+	PREFIX="$(PREFIX)"\
+	PASTHRU_DEFINE='$(DEFINE) $(PASTHRU_DEFINE)'\
+	PASTHRU_INC='$(INC) $(PASTHRU_INC)'
 
 
 # --- MakeMaker special_targets section:
 .SUFFIXES : .xs .c .C .cpp .i .s .cxx .cc $(OBJ_EXT)
 
-.PHONY: all config static dynamic test linkext manifest blibdirs clean realclean disttest distdir
+.PHONY: all config static dynamic test linkext manifest blibdirs clean realclean disttest distdir pure_all subdirs clean_subdirs makemakerdflt manifypods realclean_subdirs subdirs_dynamic subdirs_pure_nolink subdirs_static subdirs-test_dynamic subdirs-test_static test_dynamic test_static
 
 
 
@@ -318,8 +320,9 @@ PASTHRU = LIBPERL_A="$(LIBPERL_A)"\
 all :: pure_all manifypods
 	$(NOECHO) $(NOOP)
 
-
 pure_all :: config pm_to_blib subdirs linkext
+	$(NOECHO) $(NOOP)
+
 	$(NOECHO) $(NOOP)
 
 subdirs :: $(MYEXTLIB)
@@ -384,7 +387,7 @@ $(INST_MAN3DIR)$(DFSEP).exists :: Makefile.PL
 
 # --- MakeMaker linkext section:
 
-linkext :: $(LINKTYPE)
+linkext :: dynamic
 	$(NOECHO) $(NOOP)
 
 
@@ -398,7 +401,7 @@ BOOTSTRAP =
 
 # --- MakeMaker dynamic section:
 
-dynamic :: $(FIRST_MAKEFILE) $(BOOTSTRAP) $(INST_DYNAMIC)
+dynamic :: $(FIRST_MAKEFILE) config $(INST_BOOT) $(INST_DYNAMIC)
 	$(NOECHO) $(NOOP)
 
 
@@ -422,10 +425,10 @@ POD2MAN_EXE = $(PERLRUN) "-MExtUtils::Command::MM" -e pod2man "--"
 POD2MAN = $(POD2MAN_EXE)
 
 
-manifypods : pure_all  \
-	lib/RT/Extension/Slack.pm
-	$(NOECHO) $(POD2MAN) --section=$(MAN3EXT) --perm_rw=$(PERM_RW) \
-	  lib/RT/Extension/Slack.pm $(INST_MAN3DIR)/RT::Extension::Slack.$(MAN3EXT) 
+manifypods : pure_all config  \
+	lib/RT/Extension/GoogleChat.pm
+	$(NOECHO) $(POD2MAN) --section=$(MAN3EXT) --perm_rw=$(PERM_RW) -u \
+	  lib/RT/Extension/GoogleChat.pm $(INST_MAN3DIR)/RT::Extension::GoogleChat.$(MAN3EXT) 
 
 
 
@@ -475,17 +478,18 @@ clean :: clean_subdirs
 
 
 # --- MakeMaker realclean_subdirs section:
-realclean_subdirs :
+# so clean is forced to complete before realclean_subdirs runs
+realclean_subdirs : clean
 	$(NOECHO) $(NOOP)
 
 
 # --- MakeMaker realclean section:
 # Delete temporary files (via clean) and also delete dist files
-realclean purge ::  clean realclean_subdirs
+realclean purge :: realclean_subdirs
 	- $(RM_F) \
-	  $(MAKEFILE_OLD) $(FIRST_MAKEFILE) 
+	  $(FIRST_MAKEFILE) $(MAKEFILE_OLD) 
 	- $(RM_RF) \
-	  MYMETA.yml $(DISTVNAME) 
+	  $(DISTVNAME) MYMETA.yml 
 
 
 # --- MakeMaker metafile section:
@@ -562,7 +566,7 @@ create_distdir :
 	$(PERLRUN) "-MExtUtils::Manifest=manicopy,maniread" \
 		-e "manicopy(maniread(),'$(DISTVNAME)', '$(DIST_CP)');"
 
-distdir : create_distdir  distsignature
+distdir : create_distdir  
 	$(NOECHO) $(NOOP)
 
 
@@ -576,29 +580,29 @@ disttest : distdir
 
 
 # --- MakeMaker dist_ci section:
-
 ci :
-	$(PERLRUN) "-MExtUtils::Manifest=maniread" \
-	  -e "@all = keys %{ maniread() };" \
-	  -e "print(qq{Executing $(CI) @all\n}); system(qq{$(CI) @all});" \
-	  -e "print(qq{Executing $(RCS_LABEL) ...\n}); system(qq{$(RCS_LABEL) @all});"
+	$(ABSPERLRUN) -MExtUtils::Manifest=maniread -e '@all = sort keys %{ maniread() };' \
+	  -e 'print(qq{Executing $(CI) @all\n});' \
+	  -e 'system(qq{$(CI) @all}) == 0 or die $$!;' \
+	  -e 'print(qq{Executing $(RCS_LABEL) ...\n});' \
+	  -e 'system(qq{$(RCS_LABEL) @all}) == 0 or die $$!;' --
 
 
 # --- MakeMaker distmeta section:
 distmeta : create_distdir metafile
 	$(NOECHO) cd $(DISTVNAME) && $(ABSPERLRUN) -MExtUtils::Manifest=maniadd -e 'exit unless -e q{META.yml};' \
 	  -e 'eval { maniadd({q{META.yml} => q{Module YAML meta-data (added by MakeMaker)}}) }' \
-	  -e '    or print "Could not add META.yml to MANIFEST: $$$${'\''@'\''}\n"' --
+	  -e '    or die "Could not add META.yml to MANIFEST: $${'\''@'\''}"' --
 	$(NOECHO) cd $(DISTVNAME) && $(ABSPERLRUN) -MExtUtils::Manifest=maniadd -e 'exit unless -f q{META.json};' \
 	  -e 'eval { maniadd({q{META.json} => q{Module JSON meta-data (added by MakeMaker)}}) }' \
-	  -e '    or print "Could not add META.json to MANIFEST: $$$${'\''@'\''}\n"' --
+	  -e '    or die "Could not add META.json to MANIFEST: $${'\''@'\''}"' --
 
 
 
 # --- MakeMaker distsignature section:
-distsignature : create_distdir
+distsignature : distmeta
 	$(NOECHO) cd $(DISTVNAME) && $(ABSPERLRUN) -MExtUtils::Manifest=maniadd -e 'eval { maniadd({q{SIGNATURE} => q{Public-key signature (added by MakeMaker)}}) }' \
-	  -e '    or print "Could not add SIGNATURE to MANIFEST: $$$${'\''@'\''}\n"' --
+	  -e '    or die "Could not add SIGNATURE to MANIFEST: $${'\''@'\''}"' --
 	$(NOECHO) cd $(DISTVNAME) && $(TOUCH) SIGNATURE
 	cd $(DISTVNAME) && cpansign -s
 
@@ -632,51 +636,51 @@ doc__install : doc_site_install
 
 pure_perl_install :: all
 	$(NOECHO) umask 022; $(MOD_INSTALL) \
-		$(INST_LIB) $(DESTINSTALLPRIVLIB) \
-		$(INST_ARCHLIB) $(DESTINSTALLARCHLIB) \
-		$(INST_BIN) $(DESTINSTALLBIN) \
-		$(INST_SCRIPT) $(DESTINSTALLSCRIPT) \
-		$(INST_MAN1DIR) $(DESTINSTALLMAN1DIR) \
-		$(INST_MAN3DIR) $(DESTINSTALLMAN3DIR)
+		"$(INST_LIB)" "$(DESTINSTALLPRIVLIB)" \
+		"$(INST_ARCHLIB)" "$(DESTINSTALLARCHLIB)" \
+		"$(INST_BIN)" "$(DESTINSTALLBIN)" \
+		"$(INST_SCRIPT)" "$(DESTINSTALLSCRIPT)" \
+		"$(INST_MAN1DIR)" "$(DESTINSTALLMAN1DIR)" \
+		"$(INST_MAN3DIR)" "$(DESTINSTALLMAN3DIR)"
 	$(NOECHO) $(WARN_IF_OLD_PACKLIST) \
-		$(SITEARCHEXP)/auto/$(FULLEXT)
+		"$(SITEARCHEXP)/auto/$(FULLEXT)"
 
 
 pure_site_install :: all
 	$(NOECHO) umask 02; $(MOD_INSTALL) \
-		read $(SITEARCHEXP)/auto/$(FULLEXT)/.packlist \
-		write $(DESTINSTALLSITEARCH)/auto/$(FULLEXT)/.packlist \
-		$(INST_LIB) $(DESTINSTALLSITELIB) \
-		$(INST_ARCHLIB) $(DESTINSTALLSITEARCH) \
-		$(INST_BIN) $(DESTINSTALLSITEBIN) \
-		$(INST_SCRIPT) $(DESTINSTALLSITESCRIPT) \
-		$(INST_MAN1DIR) $(DESTINSTALLSITEMAN1DIR) \
-		$(INST_MAN3DIR) $(DESTINSTALLSITEMAN3DIR)
+		read "$(SITEARCHEXP)/auto/$(FULLEXT)/.packlist" \
+		write "$(DESTINSTALLSITEARCH)/auto/$(FULLEXT)/.packlist" \
+		"$(INST_LIB)" "$(DESTINSTALLSITELIB)" \
+		"$(INST_ARCHLIB)" "$(DESTINSTALLSITEARCH)" \
+		"$(INST_BIN)" "$(DESTINSTALLSITEBIN)" \
+		"$(INST_SCRIPT)" "$(DESTINSTALLSITESCRIPT)" \
+		"$(INST_MAN1DIR)" "$(DESTINSTALLSITEMAN1DIR)" \
+		"$(INST_MAN3DIR)" "$(DESTINSTALLSITEMAN3DIR)"
 	$(NOECHO) $(WARN_IF_OLD_PACKLIST) \
-		$(PERL_ARCHLIB)/auto/$(FULLEXT)
+		"$(PERL_ARCHLIB)/auto/$(FULLEXT)"
 
 pure_vendor_install :: all
 	$(NOECHO) umask 022; $(MOD_INSTALL) \
-		$(INST_LIB) $(DESTINSTALLVENDORLIB) \
-		$(INST_ARCHLIB) $(DESTINSTALLVENDORARCH) \
-		$(INST_BIN) $(DESTINSTALLVENDORBIN) \
-		$(INST_SCRIPT) $(DESTINSTALLVENDORSCRIPT) \
-		$(INST_MAN1DIR) $(DESTINSTALLVENDORMAN1DIR) \
-		$(INST_MAN3DIR) $(DESTINSTALLVENDORMAN3DIR)
+		"$(INST_LIB)" "$(DESTINSTALLVENDORLIB)" \
+		"$(INST_ARCHLIB)" "$(DESTINSTALLVENDORARCH)" \
+		"$(INST_BIN)" "$(DESTINSTALLVENDORBIN)" \
+		"$(INST_SCRIPT)" "$(DESTINSTALLVENDORSCRIPT)" \
+		"$(INST_MAN1DIR)" "$(DESTINSTALLVENDORMAN1DIR)" \
+		"$(INST_MAN3DIR)" "$(DESTINSTALLVENDORMAN3DIR)"
 
 
 doc_perl_install :: all
 
 doc_site_install :: all
-	$(NOECHO) $(ECHO) Appending installation info to $(DESTINSTALLSITEARCH)/perllocal.pod
-	-$(NOECHO) umask 02; $(MKPATH) $(DESTINSTALLSITEARCH)
+	$(NOECHO) $(ECHO) Appending installation info to "$(DESTINSTALLSITEARCH)/perllocal.pod"
+	-$(NOECHO) umask 02; $(MKPATH) "$(DESTINSTALLSITEARCH)"
 	-$(NOECHO) umask 02; $(DOC_INSTALL) \
 		"Module" "$(NAME)" \
 		"installed into" "$(INSTALLSITELIB)" \
 		LINKTYPE "$(LINKTYPE)" \
 		VERSION "$(VERSION)" \
 		EXE_FILES "$(EXE_FILES)" \
-		>> $(DESTINSTALLSITEARCH)/perllocal.pod
+		>> "$(DESTINSTALLSITEARCH)/perllocal.pod"
 
 doc_vendor_install :: all
 
@@ -687,10 +691,9 @@ uninstall :: uninstall_from_$(INSTALLDIRS)dirs
 uninstall_from_perldirs ::
 
 uninstall_from_sitedirs ::
-	$(NOECHO) $(UNINSTALL) $(SITEARCHEXP)/auto/$(FULLEXT)/.packlist
+	$(NOECHO) $(UNINSTALL) "$(SITEARCHEXP)/auto/$(FULLEXT)/.packlist"
 
 uninstall_from_vendordirs ::
-
 
 
 # --- MakeMaker force section:
@@ -722,21 +725,21 @@ $(FIRST_MAKEFILE) : Makefile.PL $(CONFIGDEP)
 
 # --- MakeMaker makeaperl section ---
 MAP_TARGET    = perl
-FULLPERL      = /usr/bin/perl
+FULLPERL      = "/usr/bin/perl"
+MAP_PERLINC   = "-Iblib/arch" "-Iblib/lib" "-I/usr/lib/x86_64-linux-gnu/perl/5.32" "-I/usr/share/perl/5.32"
 
-$(MAP_TARGET) :: static $(MAKE_APERL_FILE)
+$(MAP_TARGET) :: $(MAKE_APERL_FILE)
 	$(MAKE) $(USEMAKEFILE) $(MAKE_APERL_FILE) $@
 
-$(MAKE_APERL_FILE) : $(FIRST_MAKEFILE) pm_to_blib
+$(MAKE_APERL_FILE) : static $(FIRST_MAKEFILE) pm_to_blib
 	$(NOECHO) $(ECHO) Writing \"$(MAKE_APERL_FILE)\" for this $(MAP_TARGET)
 	$(NOECHO) $(PERLRUNINST) \
-		Makefile.PL DIR= \
+		Makefile.PL DIR="" \
 		MAKEFILE=$(MAKE_APERL_FILE) LINKTYPE=static \
 		MAKEAPERL=1 NORECURS=1 CCCDLFLAGS=
 
 
 # --- MakeMaker test section:
-
 TEST_VERBOSE=0
 TEST_TYPE=test_$(LINKTYPE)
 TEST_FILE = test.pl
@@ -744,48 +747,61 @@ TEST_FILES =
 TESTDB_SW = -d
 
 testdb :: testdb_$(LINKTYPE)
-
-test :: $(TEST_TYPE) subdirs-test
-
-subdirs-test ::
 	$(NOECHO) $(NOOP)
 
+test :: $(TEST_TYPE)
+	$(NOECHO) $(NOOP)
+
+# Occasionally we may face this degenerate target:
+test_ : test_dynamic
+	$(NOECHO) $(NOOP)
+
+subdirs-test_dynamic :: dynamic pure_all
+
+testdb_dynamic test_dynamic :: subdirs-test_dynamic
 	$(NOECHO) $(ECHO) 'No tests defined for $(NAME) extension.'
 
-test_dynamic :: pure_all
+subdirs-test_static :: static pure_all
 
-testdb_dynamic :: pure_all
-	PERL_DL_NONLAZY=1 $(FULLPERLRUN) $(TESTDB_SW) "-Iinc" "-I$(INST_LIB)" "-I$(INST_ARCHLIB)" $(TEST_FILE)
+testdb_static test_static :: subdirs-test_static
+	$(NOECHO) $(ECHO) 'No tests defined for $(NAME) extension.'
 
-test_ : test_dynamic
-
-test_static :: test_dynamic
-testdb_static :: testdb_dynamic
 
 
 # --- MakeMaker ppd section:
 # Creates a PPD (Perl Package Description) for a binary distribution.
 ppd :
-	$(NOECHO) $(ECHO) '<SOFTPKG NAME="$(DISTNAME)" VERSION="$(VERSION)">' > $(DISTNAME).ppd
-	$(NOECHO) $(ECHO) '    <ABSTRACT>RT-Extension-Slack Extension</ABSTRACT>' >> $(DISTNAME).ppd
-	$(NOECHO) $(ECHO) '    <AUTHOR>Andrew Wippler &lt;andrew.wippler@gmail.com&gt;</AUTHOR>' >> $(DISTNAME).ppd
-	$(NOECHO) $(ECHO) '    <IMPLEMENTATION>' >> $(DISTNAME).ppd
-	$(NOECHO) $(ECHO) '        <PERLCORE VERSION="5,008003,0,0" />' >> $(DISTNAME).ppd
-	$(NOECHO) $(ECHO) '        <ARCHITECTURE NAME="x86_64-linux-gnu-thread-multi-5.20" />' >> $(DISTNAME).ppd
-	$(NOECHO) $(ECHO) '        <CODEBASE HREF="" />' >> $(DISTNAME).ppd
-	$(NOECHO) $(ECHO) '    </IMPLEMENTATION>' >> $(DISTNAME).ppd
-	$(NOECHO) $(ECHO) '</SOFTPKG>' >> $(DISTNAME).ppd
+	$(NOECHO) $(ECHO) '<SOFTPKG NAME="RT-Extension-GoogleChat" VERSION="0.01">' > RT-Extension-GoogleChat.ppd
+	$(NOECHO) $(ECHO) '    <ABSTRACT>RT-Extension-GoogleChat Extension</ABSTRACT>' >> RT-Extension-GoogleChat.ppd
+	$(NOECHO) $(ECHO) '    <AUTHOR>Andrew Wippler &lt;andrew.wippler@gmail.com&gt;</AUTHOR>' >> RT-Extension-GoogleChat.ppd
+	$(NOECHO) $(ECHO) '    <IMPLEMENTATION>' >> RT-Extension-GoogleChat.ppd
+	$(NOECHO) $(ECHO) '        <ARCHITECTURE NAME="x86_64-linux-gnu-thread-multi-5.32" />' >> RT-Extension-GoogleChat.ppd
+	$(NOECHO) $(ECHO) '        <CODEBASE HREF="" />' >> RT-Extension-GoogleChat.ppd
+	$(NOECHO) $(ECHO) '    </IMPLEMENTATION>' >> RT-Extension-GoogleChat.ppd
+	$(NOECHO) $(ECHO) '</SOFTPKG>' >> RT-Extension-GoogleChat.ppd
 
 
 # --- MakeMaker pm_to_blib section:
 
 pm_to_blib : $(FIRST_MAKEFILE) $(TO_INST_PM)
 	$(NOECHO) $(ABSPERLRUN) -MExtUtils::Install -e 'pm_to_blib({@ARGV}, '\''$(INST_LIB)/auto'\'', q[$(PM_FILTER)], '\''$(PERM_DIR)'\'')' -- \
-	  lib/RT/Extension/Slack.pm blib/lib/RT/Extension/Slack.pm 
+	  'lib/RT/Extension/GoogleChat.pm' 'blib/lib/RT/Extension/GoogleChat.pm' 
 	$(NOECHO) $(TOUCH) pm_to_blib
 
 
 # --- MakeMaker selfdocument section:
+
+# here so even if top_targets is overridden, these will still be defined
+# gmake will silently still work if any are .PHONY-ed but nmake won't
+
+static ::
+	$(NOECHO) $(NOOP)
+
+dynamic ::
+	$(NOECHO) $(NOOP)
+
+config ::
+	$(NOECHO) $(NOOP)
 
 
 # --- MakeMaker postamble section:
@@ -793,26 +809,7 @@ pm_to_blib : $(FIRST_MAKEFILE) $(TO_INST_PM)
 
 # End.
 # Postamble by Module::Install 1.16
-# --- Module::Install::Admin::Makefile section:
-
-realclean purge ::
-	$(RM_F) $(DISTVNAME).tar$(SUFFIX)
-	$(RM_F) MANIFEST.bak _build
-	$(PERL) "-Ilib" "-MModule::Install::Admin" -e "remove_meta()"
-	$(RM_RF) inc
-
-reset :: purge
-
-upload :: test dist
-	cpan-upload -verbose $(DISTVNAME).tar$(SUFFIX)
-
-grok ::
-	perldoc Module::Install
-
-distsign ::
-	cpansign -s
-
 install ::
-	$(NOECHO) $(PERL) -Ilib -I"/usr/local/share/request-tracker4/lib" -I"/usr/share/request-tracker4/lib" -Iinc -MModule::Install::RTx::Runtime -e"RTxPlugin()"
-	$(NOECHO) $(PERL) -MExtUtils::Install -e "install({q(lib), q(/usr/local/share/request-tracker4/plugins/RT-Extension-Slack/lib)})"
+	$(NOECHO) $(PERL) -Ilib -I"/opt/rt5/local/lib" -I"/opt/rt5/lib" -Iinc -MModule::Install::RTx::Runtime -e"RTxPlugin()"
+	$(NOECHO) $(PERL) -MExtUtils::Install -e "install({q(lib), q(/opt/rt5/local/plugins/RT-Extension-GoogleChat/lib)})"
 

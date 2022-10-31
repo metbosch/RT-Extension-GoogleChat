@@ -1,49 +1,50 @@
-# RT-Extension-Slack
-Integration with Slack webhooks
+# RT-Extension-GoogleChat
+**Under development:** Integration with GoogleChat webhooks
 
-# DESCRIPTION
-This module is designed for *Request Tracker 4* integrating with *Slack* webhooks. It was modified from Maciek's original code which was posted on RT's mailing list. His original code is [found here](http://www.gossamer-threads.com/lists/rt/users/128413#128413)
+## DESCRIPTION
+This module is designed for *Request Tracker 5* integrating with *Google Chat* webhooks.
+It was modified from the Andrew Wippler Slack integration (https://github.com/andrewwippler/RT-Extension-Slack).
 
-The module works with the *Mattermost* server as well.
+### RT VERSION
+Tested with RT version 5.0.3.
+Probably, it also works with RT 4 (untested).
 
-# RT VERSION
-Works with RT 4.2.0 and newer
-
-# INSTALLATION
+## INSTALLATION
     perl Makefile.PL
     make
     make install
 
 May need root permissions
 
-Edit your /opt/rt4/etc/RT_SiteConfig.pm
-If you are using RT 4.2 or greater, add this line:
+Edit your /opt/rt5/etc/RT_SiteConfig.pm, add this line:
 
-	Plugin('RT::Extension::Slack');
-
-For RT 4.0, add this line:
-
-	Set(@Plugins, qw(RT::Extension::Slack));
+	Plugin('RT::Extension::GoogleChat');
 
 Clear your mason cache
-		rm -rf /opt/rt4/var/mason_data/obj
+
+	rm -rf /opt/rt5/var/mason_data/obj
 
 Restart your webserver
 
-# CONFIGURATIONS
-Edit your /opt/rt4/etc/RT_SiteConfig.pm to include:
-    Set($SlackWebhookURL, "slack-hook-url");
+## USAGE
 
-# USAGE
+Create a new script with your needed condition, with *User Defined* as action, and *Blank* as template.
+Then, use the *Custom action preparation code* to call this extension as follows:
 
-Basic scrip use. 
-
-Action: User Defined
-
-Add this code to your scrip's "Custom action preparation code":
-
-
+```perl
+RT::Extension::GoogleChat::Notify(
+  url => 'https://chat.googleapis.com/v1/spaces/<space_id>/messages?key=<api_key>&token=<api_token>',
+  text => 'This is a message from RT!'
+); 
 ```
+
+### Obtain the Google Chat webhook URL
+
+Please, refer to [official google chat documentation](https://developers.google.com/chat/how-tos/webhooks#step_1_register_the_incoming_webhook) for instructions about getting webhook url.
+
+### Another custom action preparation code example
+
+```perl
 my $text; 
 my $requestor; 
 my $ticket = $self->TicketObj; 
@@ -59,24 +60,20 @@ my $url = join '',
 $requestor = $ticket->RequestorAddresses || 'unknown'; 
 $text = sprintf('New ticket <%s|#%d> by %s: %s', $url, $ticket->Id, $requestor, $ticket->Subject); 
 
-RT::Extension::Slack::Notify(text => $text); 
+RT::Extension::GoogleChat::Notify(url => 'https://chat.googleapis.com/v1/spaces/<space_id>/messages?key=<api_key>&token=<api_token>', text => $text); 
 ```
 
-The call to ``RT::Extension::Slack::Notify`` takes further args to fill the payload.
 
-```
-RT::Extension::Slack::Notify(text => $text, channel => "support-team", username => "Helpdesk"); 
-```
-
-# AUTHORS
-[Maciek] (http://www.gossamer-threads.com/lists/rt/users/128413#128413)  
-Andrew Wippler 
+## AUTHORS
+ - [Maciek] (http://www.gossamer-threads.com/lists/rt/users/128413#128413)
+ - Andrew Wippler
+ - [@metbosch] (https://github.com/metbosch)
     
 
-# LICENSE AND COPYRIGHT
+## LICENSE AND COPYRIGHT
     The MIT License (MIT)
 
-    Copyright (c) 2015 Andrew Wippler
+    Copyright (c) 2022 @metbosch
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the

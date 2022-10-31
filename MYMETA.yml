@@ -1,22 +1,27 @@
 ---
-abstract: 'RT-Extension-Slack Extension'
+abstract: 'RT-Extension-GoogleChat Extension'
 author:
-  - 'Andrew Wippler <andrew.wippler@gmail.com>'
+  - 'Metbosch <metbosch@outlook.com>'
 build_requires:
-  ExtUtils::MakeMaker: '6.59'
+  ExtUtils::MakeMaker: '6.36'
 configure_requires:
   ExtUtils::MakeMaker: '0'
 dynamic_config: 0
-generated_by: 'ExtUtils::MakeMaker version 6.98, CPAN::Meta::Converter version 2.142690'
+generated_by: 'Module::Install version 1.16, CPAN::Meta::Converter version 2.150010'
 license: mit
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
   version: '1.4'
-name: RT-Extension-Slack
+name: RT-Extension-GoogleChat
 no_index:
   directory:
-    - t
     - inc
-requires:
-  perl: '5.008003'
-version: '0.01'
+requires: {}
+resources:
+  license: http://opensource.org/licenses/mit-license.php
+  repository: https://github.com/metbosch/RT-Extension-GoogleChat
+version: '0.010'
+x_module_install_rtx_version: '0.37'
+x_requires_rt: 5.0.0
+x_rt_too_new: 6.0.0
+x_serialization_backend: 'CPAN::Meta::YAML version 0.018'

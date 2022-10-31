@@ -1,11 +1,11 @@
 use inc::Module::Install;
 
-RTx     'RT-Extension-Slack';
+RTx     'RT-Extension-GoogleChat';
 license 'MIT';
-repository 'https://github.com/andrewwippler/RT-Extension-Slack';
+repository 'https://github.com/metbosch/RT-Extension-GoogleChat';
 
-requires_rt '4.0.0';
-rt_too_new '4.4.4';
+requires_rt '5.0.0';
+rt_too_new '6.0.0';
 
 sign;
 WriteAll;

@@ -3,21 +3,23 @@ use warnings;
 use HTTP::Request::Common qw(POST); 
 use LWP::UserAgent; 
 use JSON; 
-package RT::Extension::Slack;
+package RT::Extension::GoogleChat;
 
-our $VERSION = '0.01';
+our $VERSION = '0.010';
 
 =head1 NAME
 
-RT-Extension-Slack - Integration with Slack webhooks
+RT-Extension-GoogleChat - Integration with GoogleChat webhooks
 
 =head1 DESCRIPTION
 
-This module is designed for *Request Tracker 4* integrating with *Slack* webhooks. It was modified from Maciek's original code which was posted on RT's mailing list. His original code is [found here](http://www.gossamer-threads.com/lists/rt/users/128413#128413)
+This module is designed for *Request Tracker 5* integrating with *Google Chat* webhooks.
+It was modified from the Andrew Wippler Slack integration (https://github.com/andrewwippler/RT-Extension-Slack).
 
 =head1 RT VERSION
 
-Works with RT 4.2.0
+Works with RT5.
+Probably also with RT4 (untested)
 
 =head1 INSTALLATION
 
@@ -31,21 +33,17 @@ Works with RT 4.2.0
 
 May need root permissions
 
-=item Edit your F</opt/rt4/etc/RT_SiteConfig.pm>
+=item Edit your F</opt/rt5/etc/RT_SiteConfig.pm>
 
-If you are using RT 4.2 or greater, add this line:
+Add this line:
 
-    Plugin('RT::Extension::Slack');
+    Plugin('RT::Extension::GoogleChat');
 
-For RT 4.0, add this line:
-
-    Set(@Plugins, qw(RT::Extension::Slack));
-
-or add C<RT::Extension::Slack> to your existing C<@Plugins> line.
+or add C<RT::Extension::GoogleChat> to your existing C<@Plugins> line.
 
 =item Clear your mason cache
 
-    rm -rf /opt/rt4/var/mason_data/obj
+    rm -rf /opt/rt5/var/mason_data/obj
 
 =item Restart your webserver
 
@@ -53,23 +51,23 @@ or add C<RT::Extension::Slack> to your existing C<@Plugins> line.
 
 =head1 AUTHOR
 
-Andrew Wippler E<lt>andrew.wippler@gmail.comE<gt>
+@metbosch E<lt>metbosch@outlook.comE<gt>
 
 =head1 BUGS
 
 All bugs should be reported via email to
 
-    L<bug-RT-Extension-Slack@rt.cpan.org|mailto:bug-RT-Extension-Slack@rt.cpan.org>
+    L<bug-RT-Extension-GoogleChat@rt.cpan.org|mailto:bug-RT-Extension-GoogleChat@rt.cpan.org>
 
 or via the web at
 
-    L<rt.cpan.org|http://rt.cpan.org/Public/Dist/Display.html?Name=RT-Extension-Slack>.
+    L<rt.cpan.org|http://rt.cpan.org/Public/Dist/Display.html?Name=RT-Extension-GoogleChat>.
 
 =head1 LICENSE AND COPYRIGHT
 
 The MIT License (MIT)
 
-Copyright (c) 2015 Andrew Wippler
+Copyright (c) 2022 @metbosch
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -95,36 +93,38 @@ SOFTWARE.
 sub Notify { 
 	my %args = @_; 
 	my $payload = { 
-		username => 'Mr. RT', 
-		channel	=>	'#request-tracker',
-		icon_emoji => ':ghost:', 
 		text => 'I have forgotten to say something', 
 	}; 
-	my $service_webhook; 
-
+	my $webhook_url; 
 
 	foreach (keys %args) { 
-		$payload->{$_} = $args{$_}; 
+		if ($_ ne 'url') {  
+		  $payload->{$_} = $args{$_}; 
+		} 
 	} 
 	if (!$payload->{text}) { 
 		return; 
 	} 
 	my $payload_json = JSON::encode_json($payload); 
 
-	$service_webhook = RT->Config->Get('SlackWebhookURL'); 
-	if (!$service_webhook) { 
+	$webhook_url = $args{url}; 
+	if (!$webhook_url) { 
+		$RT::Logger->info('GoogleChat webhook URL not found'); 
 		return; 
 	} 
 
 	my $ua = LWP::UserAgent->new(); 
 	$ua->timeout(10); 
 
-	$RT::Logger->info('Pushing notification to Slack: '. $payload_json); 
-	my $response = $ua->post($service_webhook,[ 'payload' => $payload_json ]);
+	#$RT::Logger->info('Pushing notification to GoogleChat: '. $payload_json); 
+	my $response = $ua->post($webhook_url,
+	  'Content-Type' => 'application/json; charset=UTF-8',
+	  'Content' => $payload_json
+	);
 	if ($response->is_success) { 
 		return;
 	} else { 
-		$RT::Logger->error('Failed to push notification to Slack ('. 
+		$RT::Logger->error('Failed to push notification to GoogleChat ('. 
 		$response->code .': '. $response->message .')'); 
 	} 
 } 
